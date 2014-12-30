@@ -23,7 +23,7 @@ extern void GSSendAppPreferencesChanged(CFStringRef bundleID, CFStringRef key);
 }
 
 - (FSSwitchState)stateForSwitchIdentifier:(NSString *)switchIdentifier {
-	CFPreferencesAppSynchronize(kRISpringboard);
+    CFPreferencesAppSynchronize(kRISpringboard);
     Boolean RIDone = CFPreferencesGetAppBooleanValue(kRIIconStatKey, kRISpringboard, NULL);
     return RIDone ? FSSwitchStateOn : FSSwitchStateOff;
 }
@@ -33,13 +33,13 @@ extern void GSSendAppPreferencesChanged(CFStringRef bundleID, CFStringRef key);
 		return;
 	}
 	NSString *iconStatePlist = [@"/User/Library/SpringBoard/IconState.plist" stringByExpandingTildeInPath];
-    [[NSFileManager defaultManager] removeItemAtPath:iconStatePlist error:nil];
+    	[[NSFileManager defaultManager] removeItemAtPath:iconStatePlist error:nil];
 	CFPropertyListRef obj = CFPreferencesCopyAppValue(kRIIconStatKey, kRISpringboard);
 	CFPropertyListRef obj2 = CFPreferencesCopyAppValue(kRIIconStatKey2, kRISpringboard);
 	if (obj != nil || obj2 != nil) {
 		CFPreferencesSetAppValue(kRIIconStatKey, newState ? kCFBooleanTrue : kCFBooleanFalse, kRISpringboard);
-        CFPreferencesSetAppValue(kRIIconStatKey2, newState ? kCFBooleanTrue : kCFBooleanFalse, kRISpringboard);
-        CFPreferencesAppSynchronize(kRISpringboard);
+        	CFPreferencesSetAppValue(kRIIconStatKey2, newState ? kCFBooleanTrue : kCFBooleanFalse, kRISpringboard);
+        	CFPreferencesAppSynchronize(kRISpringboard);
 	}
 	GSSendAppPreferencesChanged(kRISpringboard, kRIIconStatKey);
 
