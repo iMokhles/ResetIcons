@@ -2,16 +2,11 @@
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 
-// @interface NSUserDefaults (Tweak_Category)
-// - (id)objectForKey:(NSString *)key inDomain:(NSString *)domain;
-// - (void)setObject:(id)value forKey:(NSString *)key inDomain:(NSString *)domain;
-// @end
-
-// static NSString *nsDomainString = @"com.imokhles.reseticons";
-// static NSString *nsNotificationString = @"com.imokhles.reseticons/preferences.changed";
-
 @interface ResetIconsSwitch : NSObject <FSSwitchDataSource>
 @end
+
+/********** Thanks to rpetrich and A3Tweaks **************/
+// https://github.com/a3tweaks/Flipswitch/tree/c6e2b9c135503cb4b8234f1274a924357baeedd2/Switches/AutoBrightness
 
 #ifndef GSEVENT_H
 extern void GSSendAppPreferencesChanged(CFStringRef bundleID, CFStringRef key);
@@ -47,19 +42,8 @@ extern void GSSendAppPreferencesChanged(CFStringRef bundleID, CFStringRef key);
         CFPreferencesAppSynchronize(kRISpringboard);
 	}
 	GSSendAppPreferencesChanged(kRISpringboard, kRIIconStatKey);
-	// switch (newState) {
-	// case FSSwitchStateIndeterminate:
-	// 	break;
-	// case FSSwitchStateOn:
-	// 	[[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:@"enabled" inDomain:nsDomainString];
-	// 	CFNotificationCenterPostNotification(CFNotificationCenterGetDarwinNotifyCenter(), (CFStringRef)nsNotificationString, NULL, NULL, YES);
-	// 	break;
-	// case FSSwitchStateOff:
-	// 	[[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:NO] forKey:@"enabled" inDomain:nsDomainString];
-	// 	CFNotificationCenterPostNotification(CFNotificationCenterGetDarwinNotifyCenter(), (CFStringRef)nsNotificationString, NULL, NULL, YES);
-	// 	break;
-	// }
-	// return;
+
+	/*************** My Research result ****************/
     // r7 = s13 + 0x4;
     // r4 = [NSFileManager defaultManager];
     // r2 = [@"~/Library/SpringBoard/IconState.plist" stringByExpandingTildeInPath];
