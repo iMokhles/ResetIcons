@@ -1,0 +1,7 @@
+#!/bin/sh
+if [[ $(whoami) == "mobile" ]]; then
+uicache 1>/dev/null 2>&1
+else
+su mobile -c uicache 1>/dev/null 2>&1
+fi
+exit 0;

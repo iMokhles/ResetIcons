@@ -1,0 +1,10 @@
+Package: com.imokhles.reseticons
+Name: ResetIcons
+Description: flipswitch to reset homescreen icons
+Version: 1.0
+Priority: optional
+Section: Addons (Flipswitch)
+Architecture: iphoneos-arm
+Depends: mobilesubstrate, com.a3tweaks.flipswitch
+Maintainer: imokhles
+Author: imokhles
